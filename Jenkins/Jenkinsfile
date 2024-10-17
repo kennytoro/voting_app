@@ -12,6 +12,7 @@ pipeline {
                 sh '''
                 pwd
                 ls
+                
                 '''
             }
 
@@ -20,6 +21,7 @@ pipeline {
         stage('Applying kubectl to the deployment') {
             steps {
                 sh "kubectl apply -f ./deployment/"
+                echo "Deployment was successful!"
             }
             
         }
