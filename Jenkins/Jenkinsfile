@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checking the directory') {
+            steps {
+                sh '''
+                pwd
+                ls
+                '''
+            }
+
+        }
+
+        stage('Applying kubectl to the deployment') {
+            steps {
+                sh "kubectl apply -f ../deployment/"
+            }
+            
+        }
+
+        stage('Applying kubectl to the service') {
+            steps {
+                sh "kubectl apply -f ../services"
+
+            }
+
+        }
+
+        stage('Testing') {
+            steps {
+                sh '''
+                kubectl get deployment
+                kubectl get services
+                kubectl get pod
+                '''
+            }
+        }
+    }
+
+
+}
