@@ -15,14 +15,14 @@ pipeline {
 
         stage('Applying kubectl to the deployment') {
             steps {
-                sh "kubectl apply -f ../deployment/"
+                sh "kubectl apply -f ./deployment/"
             }
             
         }
 
         stage('Applying kubectl to the service') {
             steps {
-                sh "kubectl apply -f ../services"
+                sh "kubectl apply -f ./services"
 
             }
 
